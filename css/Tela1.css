@@ -1,0 +1,124 @@
+
+.container {
+  max-width: 1500px;
+  margin: 50px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* espaço entre os blocos */
+}
+
+.faq {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: white;
+  padding: 25px 20px; /* Aumentei o padding para aumentar a altura do bloco */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.faq[open] {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faq summary {
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Adicionando um espaço para a seta */
+}
+
+.faq summary::-webkit-details-marker {
+  display: none; /* Remove a setinha padrão */
+}
+
+/* Adicionando a seta personalizada */
+.faq summary::before {
+  content: '\2B9F'; /* Símbolo de seta para baixo */
+  font-size: 20px; /* Ajuste o tamanho da seta */
+  color: #444; /* Cor suave para a seta */
+  margin-right: 5px;
+  transition: transform 0.3s ease; /* Transição suave para rotação */
+}
+
+.faq[open] summary::before {
+  transform: rotate(-180deg); /* Roda a seta para cima quando o FAQ estiver aberto */
+}
+
+.faq p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+/* .menu {
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+}
+
+.menuhamb img {
+    width: 40px;
+    cursor: pointer;
+    display: flex;
+}
+
+.menuhamb {
+    display: flex;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Menu lateral */
+.menu-mobile {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 280px;
+    height: auto;
+    background: linear-gradient(to right, #024f87, #0f939b, #7DA0CA);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 15px;
+    z-index: 999;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.menu-mobile.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-mobile a {
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    transition: background 0.2s ease-in-out;
+}
+
+.menu-mobile a:hover {
+    background-color: #052659;
+}
+
+.menuImg{
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+} 
