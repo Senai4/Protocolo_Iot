@@ -76,83 +76,56 @@ body {
   background-color: #4D389E;
 }
 
-
-/* A 'scene' cria o ambiente 3D com perspectiva */
 .scene {
-    width: 300px;
-    height: 300px;
-    perspective: 1000px; /* A profundidade da cena 3D */
+    width: 1400px;
+    height: 400px;
+    perspective: 1000px;
 }
 
-/* O 'carousel' é o anel que vai girar */
+/* O 'carousel' agora é estático (sem animação) */
 .carousel {
     width: 100%;
     height: 100%;
     position: relative;
-    transform-style: preserve-3d; /* Essencial para que os filhos fiquem no espaço 3D */
-    animation: spin 25s infinite linear; /* A animação de rotação */
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
-/* Pausa a animação quando o mouse está sobre o anel */
-.carousel:hover {
-    animation-play-state: paused;
-}
-
-/* Estilo base para cada imagem/item no anel */
+/* Itens foram centralizados e o tamanho ajustado */
 .item {
     position: absolute;
     top: 20px;
-    left: 20px;
-    width: 260px;
-    height: 260px;
+    left: calc(50% - 180px); 
+    width: 360px;
+    height: 360px;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .item1 {
     background-image: url('https://picsum.photos/id/237/400/400');
-    transform: rotateY(0deg) translateZ(300px);
+    transform: rotateY(-130deg) translateZ(300px);
 }
 .item2 {
     background-image: url('https://picsum.photos/id/238/400/400');
-    transform: rotateY(45deg) translateZ(300px);
+    transform: rotateY(-65deg) translateZ(300px);
 }
 .item3 {
     background-image: url('https://picsum.photos/id/239/400/400');
-    transform: rotateY(90deg) translateZ(300px);
+    transform: rotateY(0deg) translateZ(300px);
 }
 .item4 {
     background-image: url('https://picsum.photos/id/240/400/400');
-    transform: rotateY(135deg) translateZ(300px);
+    transform: rotateY(160deg) translateZ(300px);
 }
 .item5 {
     background-image: url('https://picsum.photos/id/241/400/400');
-    transform: rotateY(180deg) translateZ(300px);
-}
-.item6 {
-    background-image: url('https://picsum.photos/id/242/400/400');
-    transform: rotateY(225deg) translateZ(300px);
-}
-.item7 {
-    background-image: url('https://picsum.photos/id/243/400/400');
-    transform: rotateY(270deg) translateZ(300px);
-}
-.item8 {
-    background-image: url('https://picsum.photos/id/244/400/400');
-    transform: rotateY(315deg) translateZ(300px);
+    transform: rotateY(65deg) translateZ(300px);
 }
 
-/* A animação que faz o carrossel girar 360 graus */
-@keyframes spin {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(360deg);
-    }
-}
 
 @media (min-width: 800px) {
     
