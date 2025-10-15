@@ -1,85 +1,43 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* O novo container que cria as colunas com Flexbox */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .navbar {
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(to right, #8C7ACE, #4D389E);
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to right, #8C7ACE, #4D389E);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
-.menu {
-    width: 100%;
-    justify-content: space-around;
-    display: flex;
+.menuImg {
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  margin-left: 10px;
 }
-
-.menu a {
-    text-decoration: none;
-    font-size: 16px;
-    color: black;
-}
-
-.menuhamb img {
-    width: 40px;
-    cursor: pointer;
-    display: flex;
-}
-
-.menuhamb {
-    display: flex;
-    width: 60px;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Menu lateral */
-.menu-mobile {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    width: 280px;
-    height: auto;
-    background: linear-gradient(to right, #8C7ACE, #4D389E);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    display: none;
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 15px;
-    z-index: 999;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    opacity: 0;
-    transform: translateY(-10px);
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.menu-mobile.active {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.menu-mobile a {
-    color: white;
-    text-decoration: none;
-    padding: 12px;
-    border-radius: 10px;
-    transition: background 0.2s ease-in-out;
-}
-
-.menu-mobile a:hover {
-    background-color: #4D389E;
-}
-
-.menuImg{
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-} 
 
 .logo img {
   width: 350px;
@@ -91,21 +49,75 @@
   margin-top: 5px;
 }
 
-.container {
-  max-width: 950px;
-  margin: 150px auto;
-  padding: 0 20px;
-  display: flex;
+/* --- MENU MOBILE --- */
+.menu-mobile {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 280px;
+  background: linear-gradient(to right, #8C7ACE, #4D389E);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: none;
   flex-direction: column;
-  gap: 40px; /* espaço entre os blocos */
-  margin-left: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  z-index: 999;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
+.menu-mobile.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-mobile a {
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+  transition: background 0.2s ease-in-out;
+  font-size: 18px;
+}
+
+.menu-mobile a:hover {
+  background-color: #4D389E;
+}
+
+/* --- CONTEÚDO PRINCIPAL (FAQ E IMAGEM) --- */
+.container {
+  width: 950px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container-img {
+  /* Coluna da Imagem */
+  width: 600px;
+  height: 680px;
+  border: 2px solid #4D389E;
+  border-radius: 20px;
+  flex-shrink: 0;
+  /* Impede que a imagem encolha */
+}
+
+.container-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+/* --- ESTILOS DO FAQ --- */
 .faq {
   border: 1px solid #4D389E;
   border-radius: 10px;
   background-color: white;
-  padding: 25px 20px; /* Aumentei o padding para aumentar a altura do bloco */
+  padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease;
 }
@@ -122,80 +134,61 @@
   outline: none;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Adicionando um espaço para a seta */
 }
 
 .faq summary::-webkit-details-marker {
-  display: none; /* Remove a setinha padrão */
+  display: none;
 }
 
-/* Adicionando a seta personalizada */
 .faq summary::before {
-  content: '\2B9F'; /* Símbolo de seta para baixo */
-  font-size: 20px; /* Ajuste o tamanho da seta */
-  color: #4D389E; /* Cor suave para a seta */
-  margin-right: 5px;
-  transition: transform 0.3s ease; /* Transição suave para rotação */
+  content: '\27A4';
+  font-size: 16px;
+  color: #4D389E;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+   cursor: pointer;
 }
 
 .faq[open] summary::before {
-  transform: rotate(-180deg); /* Roda a seta para cima quando o FAQ estiver aberto */
+  transform: rotate(90deg);
 }
 
 .faq p {
   margin-top: 10px;
   font-size: 16px;
   color: #444;
+  padding-left: 26px;
 }
 
-.container-img {
-  width: 600px;
-  height: 680px;
-  background-color: #ccc;
-  margin-left: 1200px;
-  margin-top: -825px;
-  border-radius: 20px;
-  border: 2px solid #4D389E;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-}
-
-/* Footer */
+/* --- FOOTER --- */
 .footer {
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(to right, #8C7ACE, #4D389E);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    text-align: center;
-    position: relative;
-    bottom: auto;
-    left: auto;
-    z-index: 10;
-    margin-top: 70px; 
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to right, #8C7ACE, #4D389E);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .social-icons {
   display: flex;
-  justify-content: center;
-  gap: 20px; 
-  margin-top: 5px;
+  gap: 20px;
 }
 
 .social-icons .icon {
-  background-color: #ffffff;         /* bolha branca */
-  color: #4D389E;                    /* cor do ícone */
-  font-size: 24px;                   /* ícone maior */
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;               /* formato de bolha (círculo) */
+  background-color: #ffffff;
+  color: #4D389E;
+  font-size: 24px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,7 +197,39 @@ img {
 }
 
 .social-icons .icon:hover {
-  background-color: #4D389E;       /* bolha muda de cor */
-  color: #ffffff;                  /* ícone muda para branco */
-  transform: scale(1.1);           /* leve zoom ao passar o mouse */
+  background-color: #4D389E;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+@media (min-width: 800px) {
+
+  .logo img {
+    margin-left: 1150px;
+  }
+
+  .container {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.container-img {
+  width: 600px;
+  height: 438px;
+  border: 2px solid #4D389E;
+  border-radius: 20px;
+  flex-shrink: 0;
+  margin-top: 40px;
+}
+
+.container-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
 }

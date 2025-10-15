@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anel de Imagens 3D com CSS</title>
+    <title>Tela2</title>
     <link rel="stylesheet" href="css/Tela2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
+
+    <header class="navbar">
+        <div class="menuImg" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="menu-mobile" id="mobileMenu">
+            <a href="/home.html">Home</a>
+            <a href="/Tela1.html">Oque é</a>
+            <a href="/Tela3.html">Caso de Sucesso</a>
+            <a href="/Tela4.html">Alerta</a>
+            <a href="/Tela5.html">Vídeo</a>
+        </nav>
+
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo da Empresa">
+        </div>
+    </header>
+
     <div class="scene">
         <div class="carousel">
             <div class="item item1"></div>
@@ -19,5 +40,7 @@
             <div class="item item8"></div>
         </div>
     </div>
+
+  <script src="/js/Tela1.js"></script>
 </body>
 </html>

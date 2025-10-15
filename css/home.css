@@ -58,3 +58,11 @@ h2 {
     text-decoration: none;
     color: inherit;
 }
+
+@media (min-width: 800px) {
+    .container {
+        width: 800px;
+        margin-left: 340px;
+        margin-top: 190px;
+    }
+}
