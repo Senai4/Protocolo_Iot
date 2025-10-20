@@ -15,70 +15,74 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Seleciona os elementos que vamos usar
-    const scene = document.querySelector('.scene');
-    const carousel = document.querySelector('.carousel');
+// Carrossel de imagens
 
-    // Variáveis para controlar o estado do carrossel e do arraste
-    const numItems = 5; // O número total de itens no carrossel
-    const theta = 360 / numItems; // O ângulo entre cada item (72 graus)
-    let currentAngle = 0; // O ângulo de rotação atual do carrossel
-    let isMouseDown = false; // Flag para saber se o mouse está pressionado
-    let startX = 0; // Posição X inicial do mouse quando o clique começa
+const scene = document.querySelector('.scene');
+    const items = document.querySelectorAll('.item');
+    const numItems = items.length;
 
-    // --- FUNÇÃO PARA "SNAP" (AJUSTAR) AO ITEM MAIS PRÓXIMO ---
-    const snapToClosestItem = () => {
-        // Calcula o índice do item mais próximo do centro
-        const closestItemIndex = Math.round(currentAngle / theta);
-        
-        // Calcula o ângulo exato para alinhar com esse item
-        const targetAngle = closestItemIndex * theta;
-        
-        // Atualiza o ângulo atual e aplica a transformação com transição suave
-        currentAngle = targetAngle;
-        carousel.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'; // Garante que a transição está ativa
-        carousel.style.transform = `rotateY(${currentAngle}deg)`;
-    };
+    let activeIndex = 0;
+    let isMouseDown = false;
+    let startX = 0;
+    let dragThreshold = 100; // Distância em pixels para registrar um "arraste"
 
-    // 1. Quando o usuário clica com o mouse
-    scene.addEventListener('mousedown', (event) => {
+    function updatePositions() {
+        items.forEach((item, index) => {
+            let pos = index - activeIndex;
+
+            if (pos < -Math.floor(numItems / 2)) {
+                pos += numItems;
+            } else if (pos > Math.floor(numItems / 2)) {
+                pos -= numItems;
+            }
+            
+            item.dataset.pos = pos;
+        });
+    }
+
+    function startDrag(event) {
         isMouseDown = true;
-        startX = event.pageX; // Salva a posição inicial do X
-        // Remove a transição durante o arraste para que o movimento seja instantâneo
-        carousel.style.transition = 'none'; 
-        scene.style.cursor = 'grabbing'; // Muda o cursor para indicar que está arrastando
-    });
+        startX = event.pageX || event.touches[0].pageX;
+        scene.style.cursor = 'grabbing';
+        // Remove a transição para o arraste ser direto
+        items.forEach(item => item.style.transition = 'none');
+    }
 
-    // 2. Quando o usuário move o mouse (enquanto está clicado)
-    window.addEventListener('mousemove', (event) => {
-        if (!isMouseDown) return; // Se o mouse não estiver pressionado, não faz nada
-
-        // Calcula a distância que o mouse se moveu
-        const deltaX = event.pageX - startX;
-        
-        // Ajuste a sensibilidade do arraste aqui. Um número menor torna o arraste mais "lento".
-        const rotationSensitivity = 0.1;
-        const rotationDelta = deltaX * rotationSensitivity;
-
-        // Aplica a rotação em tempo real
-        carousel.style.transform = `rotateY(${currentAngle + rotationDelta}deg)`;
-    });
-
-    // 3. Quando o usuário solta o botão do mouse
-    window.addEventListener('mouseup', (event) => {
-        if (!isMouseDown) return; // Se não estava arrastando, não faz nada
-
+    function stopDrag(event) {
+        if (!isMouseDown) return;
         isMouseDown = false;
-        scene.style.cursor = 'grab'; // Volta o cursor ao normal
+        scene.style.cursor = 'grab';
+        // Restaura a transição para a animação de "snap"
+        items.forEach(item => item.style.transition = '');
 
-        // Calcula a distância final do arraste para atualizar o ângulo
-        const deltaX = event.pageX - startX;
-        const rotationSensitivity = 0.5;
-        currentAngle += deltaX * rotationSensitivity;
+        const endX = event.pageX || event.changedTouches[0].pageX;
+        const deltaX = endX - startX;
 
-        // Chama a função para ajustar ao item mais próximo
-        snapToClosestItem();
+        if (deltaX > dragThreshold) {
+            activeIndex--;
+        } else if (deltaX < -dragThreshold) {
+            activeIndex++;
+        }
+
+        // Garante que o índice sempre "dê a volta"
+        activeIndex = (activeIndex + numItems) % numItems;
+
+        updatePositions();
+    }
+    
+    // Event Listeners
+    scene.addEventListener('mousedown', startDrag);
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('mousemove', (event) => {
+      // Previne o arraste de texto/imagens padrão do navegador
+      if(isMouseDown) {
+        event.preventDefault();
+      }
     });
 
-    // Bônus: Mudar o cursor para indicar que o carrossel é "arrastável"
-    scene.style.cursor = 'grab';
+    // Mobile
+    scene.addEventListener('touchstart', startDrag, { passive: true });
+    window.addEventListener('touchend', stopDrag);
+    
+    // Define o estado inicial
+    updatePositions();

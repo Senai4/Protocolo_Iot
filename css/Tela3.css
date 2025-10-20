@@ -1,0 +1,86 @@
+body {
+    background-color: #121217;
+    color: black;
+    font-family: system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    margin: 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    max-width: 75rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.card {
+    --hue: 220;
+    --saturation: 80%;
+    --lightness: 55%;
+    flex: 1 1 18rem;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 1px solid hsl(var(--hue), var(--saturation), var(--lightness));
+    box-shadow: 0 0 1.5rem hsla(var(--hue), var(--saturation), var(--lightness), 0.25);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 2.5rem hsla(var(--hue), var(--saturation), var(--lightness), 0.4);
+}
+
+.item1 {
+    --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
+
+.item2 {
+    --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
+
+.item3 {
+    --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
+
+.item4 {
+    --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
+
+.item5 {
+    --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
+
+.item6 {
+    --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
+
+.item7 {
+   --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
+
+.item8 {
+    --hue: 281;
+    --saturation: 95%;
+    --lightness: 61%;
+}
