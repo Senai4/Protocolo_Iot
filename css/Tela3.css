@@ -24,7 +24,7 @@ body {
     --saturation: 80%;
     --lightness: 55%;
     flex: 1 1 18rem;
-    padding: 1.5rem 2rem;
+    padding: 4rem 2rem;
     border-radius: 15px;
     background-color: transparent;
     border: 1px solid hsl(var(--hue), var(--saturation), var(--lightness));
@@ -35,6 +35,13 @@ body {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 2.5rem hsla(var(--hue), var(--saturation), var(--lightness), 0.4);
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
 .item1 {
@@ -68,18 +75,6 @@ body {
 }
 
 .item6 {
-    --hue: 281;
-    --saturation: 95%;
-    --lightness: 61%;
-}
-
-.item7 {
-   --hue: 281;
-    --saturation: 95%;
-    --lightness: 61%;
-}
-
-.item8 {
     --hue: 281;
     --saturation: 95%;
     --lightness: 61%;
