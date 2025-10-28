@@ -32,28 +32,38 @@
 
     <div class="container">
       <details class="faq">
-        <summary></summary>
-        <p></p>
+        <summary>O que é MQTT e qual é sua função principal?</summary>
+        <p>O MQTT (Message Queuing Telemetry Transport) é um protocolo de mensagens ultraleve, projetado para conectar milhões de dispositivos com pouca energia ou baixa largura de banda. Sua função é permitir que esses dispositivos (na Internet das Coisas - IoT) troquem informações de forma eficiente.</p>
       </details>
 
       <details class="faq">
-        <summary></summary>
-        <p></p>
+        <summary> Qual a analogia mais fácil para entender o MQTT?</summary>
+        <p>Pense no MQTT como um sistema de assinaturas de jornal:
+        O Broker é a Banca de Jornal central.
+        Os Tópicos são as Seções (ex: Esportes, Clima).
+        Os dispositivos (Clientes) que enviam dados Publicam (mandam a notícia).
+        Os dispositivos que recebem Assinam (se inscrevem na seção).
+        A Banca (Broker) garante que a notícia chegue somente a quem se inscreveu no Tópico correto.</p>
       </details>
 
       <details class="faq">
-        <summary></summary>
-        <p></p>
+        <summary>Quem são os três protagonistas no sistema MQTT?</summary>
+        <p>Broker (Corretor): O servidor central. Ele recebe todas as mensagens e distribui para os Clientes inscritos.
+        Cliente: Qualquer dispositivo (sensor ou aplicativo) que se conecta para enviar (Publicar) ou receber (Assinar) mensagens.
+        Tópico (Topic): A etiqueta hierárquica (ex: casa/cozinha/luz) que atua como o endereço da informação.</p>
       </details>
 
       <details class="faq">
-        <summary></summary>
-        <p></p>
+        <summary>Por que o MQTT é ideal para a IoT (Internet das Coisas)?</summary>
+        <p>Ele é ideal por ser leve (cabeçalhos minúsculos), o que economiza dados e bateria em sensores remotos. Além disso, o modelo de Publicar/Assinar permite que os dispositivos se comuniquem sem saber quem é o destinatário, simplificando imensamente a arquitetura de rede.</p>
       </details>
 
       <details class="faq">
-        <summary></summary>
-        <p></p>
+        <summary>O que são os Níveis de Qualidade de Serviço (QoS)?</summary>
+        <p>O QoS define o nível de garantia de que uma mensagem será entregue:
+        QoS 0: Envio rápido, sem garantia de entrega (pode ser perdida).
+        QoS 1: Pelo menos uma vez (pode ser entregue mais de uma vez).
+        QoS 2: Exatamente uma vez (a entrega é garantida e única - o mais seguro, mas o mais lento).</p>
       </details>
     </div>
 
