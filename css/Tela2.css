@@ -108,11 +108,11 @@ body {
                 filter 0.8s ease;
 }
 
-.item:nth-child(1) { background-image: url('https://picsum.photos/id/1015/400/600'); } 
-.item:nth-child(2) { background-image: url('https://picsum.photos/id/10/400/600'); }  
-.item:nth-child(3) { background-image: url('https://picsum.photos/id/1011/400/600'); } 
-.item:nth-child(4) { background-image: url('https://picsum.photos/id/1025/400/600'); } 
-.item:nth-child(5) { background-image: url('https://picsum.photos/id/1005/400/600'); } 
+.item:nth-child(1) { background-image: url('../img/1.png'); }
+.item:nth-child(2) { background-image: url('../img/2.png'); }
+.item:nth-child(3) { background-image: url('../img/3.png'); }
+.item:nth-child(4) { background-image: url('../img/4.png'); }
+.item:nth-child(5) { background-image: url('../img/5.png'); }
 
 .item[data-pos="0"] {
     transform: rotateY(0deg) translateZ(400px) scale(1);
