@@ -5,3 +5,10 @@
     border: 2px solid #4D389E;
     border-radius: 10px;
 }
+
+@media (min-width: 800px) {
+    .container {
+        width: 1000px;
+        height: 550px;
+    }
+}

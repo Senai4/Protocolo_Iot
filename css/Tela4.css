@@ -3,7 +3,7 @@
     width: calc(50% - 10px);
     max-width: 820px; 
     min-width: 260px;
-    height: 500px;
+    height: 520px;
     display: inline-flex; 
     flex-direction: column;
     gap: 20px;
@@ -21,16 +21,21 @@ h1 {
     text-align: justify;
     color: black;
     line-height: 2;
-    padding: 40px 50px;
+    padding: 1px 50px 20px 50px;
 }
 
-h2 {
+p {
+    font-size: 24px;
     text-align: center;
     color: #4D389E;
-    font-size: 28px;
-    margin-bottom: 500px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+    font-weight: bold;
+    margin-top: 15px;
+}
 
+@media (min-width: 800px) {
+    .container,
+    .container1 {
+        width: calc(50% - 10px);
+        max-width: 720px; 
+    }
 }

@@ -29,12 +29,14 @@
     </header>
 
     <div class="container">
+        <p>Caso 1</p>
         <h1>MQTT é um protocolo de mensageria leve (otimizado para dados minúsculos de sensores), não de transferência de arquivos.
         Problema de Sobrecarga (Overhead): Se você tentar enviar um arquivo de 50 MB, o MQTT é forçado a quebrá-lo em milhares de mensagens individuais. O cabeçalho mínimo do MQTT é de apenas 2 bytes, mas ao somar esses 2 bytes milhares de vezes, a sobrecarga de protocolo se torna enorme e desperdiça uma quantidade absurda de banda.
         Aumento de Consumo: O dispositivo receptor (Subscriber) teria que gastar muita CPU e memória para receber e reconstruir o arquivo, anulando o benefício de baixo consumo do MQTT.</h1>
     </div>
 
     <div class="container1">
+         <p>Caso 2</p>
         <h1>O MQTT é um protocolo assíncrono (Publicar/Assinar), não ideal para interações imediatas de Requisição-Resposta (como em APIs REST ou e-commerce).
         O Porquê:
         Latência: A exigência de um Broker central (intermediário) adiciona um "salto" extra, gerando latência desnecessária para aplicações que esperam uma resposta instantânea.
